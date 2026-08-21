@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Tools</title>
+    <meta name="description" content="Lightweight client-side JSON formatter, minifier, validator, and diff tool. No data sent to servers.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{ }</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">JSON Tools</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </header>
+
+    <nav class="tabs">
+        <button class="tabs__btn tabs__btn--active" data-tab="format">Format</button>
+        <button class="tabs__btn" data-tab="diff">Diff</button>
+    </nav>
+
+    <main class="content">
+        <section id="tab-format" class="tab-content tab-content--active">
+            <textarea id="formatInput" class="textarea" placeholder="Paste or type JSON here..." rows="12"></textarea>
+            <div class="actions">
+                <button class="btn btn--primary" id="btnFormat">Format</button>
+                <button class="btn" id="btnMinify">Minify</button>
+                <button class="btn" id="btnValidate">Validate</button>
+                <button class="btn btn--danger" id="btnClear">Clear</button>
+            </div>
+            <textarea id="formatOutput" class="textarea textarea--readonly" placeholder="Result will appear here..." rows="12" readonly></textarea>
+            <div class="status" id="formatStatus"></div>
+        </section>
+
+        <section id="tab-diff" class="tab-content">
+            <div class="diff-inputs">
+                <textarea id="diffLeft" class="textarea" placeholder="Left JSON..." rows="10"></textarea>
+                <textarea id="diffRight" class="textarea" placeholder="Right JSON..." rows="10"></textarea>
+            </div>
+            <div class="actions">
+                <button class="btn btn--primary" id="btnCompare">Compare</button>
+                <button class="btn" id="btnSwap">Swap</button>
+                <button class="btn btn--danger" id="btnDiffClear">Clear</button>
+                <div class="diff-view-toggle">
+                    <label><input type="radio" name="diffView" value="side-by-side" checked> Side-by-side</label>
+                    <label><input type="radio" name="diffView" value="inline"> Inline</label>
+                </div>
+            </div>
+            <div class="status" id="diffStatus"></div>
+            <div id="diffResult" class="diff-result"></div>
+        </section>
+    </main>
+
+    <script src="js/formatter.js"></script>
+    <script src="lib/diff.min.js"></script>
+    <script src="js/differ.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
